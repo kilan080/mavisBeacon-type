@@ -116,7 +116,14 @@
             alert("Wrong Letter, try again");
           }
         }
-    
+
+          function onSomethingOtherThanLoad(event){
+          var target = document.getElementsByTagName("input")[0];
+          if (event.target != target) {
+            target.focus();
+            target.click();
+          }
+        }
         // Event listener for keydown event
         document.addEventListener('keydown', (event) => {
           checkKeyPress(event.key);
