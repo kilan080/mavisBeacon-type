@@ -9,7 +9,7 @@
 
       <style>
         body {
-          background-color: #f0f0f0;
+          /* background-color: #f0f0f0; */
           font-family: Arial, sans-serif;
         }
     
@@ -49,7 +49,8 @@
       </style>
     </head>
     
-    <body>
+    <body onload="triggerKeyboard()">
+      <input type="text" id="hiddenInput" style="display: none;">
       <div class="all">
         <h1 id="letterA">A</h1>
         <h1 id="letterB">B</h1>
@@ -78,6 +79,7 @@
         <h1 id="letterY">Y</h1>
         <h1 id="letterZ">Z</h1>
       </div>
+
       <script type="text/javascript">
         // Function to generate a random letter from A-Z
         function getRandomLetter() {
@@ -116,19 +118,19 @@
             alert("Wrong Letter, try again");
           }
         }
+        function triggerKeyboard() {
+          const hiddenInput = document.getElementById("hiddenInput");
+          hiddenInput.style.display = "block"   //Temporary display
+          hiddenInput.focus();                  //Trigger the keyboard
+          hiddenInput.style.display = "none"    //hide again after focus
+        }
 
-        //   function onSomethingOtherThanLoad(event){
-        //   var target = document.getElementsByTagName("input")[0];
-        //   if (event.target != target) {
-        //     target.focus();
-        //     target.click();
-        //   }
-        // }
+       
 
-        
+
         // Event listener for keydown event
         document.addEventListener('keydown', (event) => {
-          checkKeyPress(event.key).focus();
+          checkKeyPress(event.key);
         })
       </script>
 </body>
